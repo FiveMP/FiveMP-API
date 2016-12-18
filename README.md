@@ -4,7 +4,8 @@ This API was created to give an idea of how the API could look like in 0.2a, thi
 ## Contribute
 1. Clone the source
 2. Open `Base.vcxproj`
-3. Submit pull request
+3. Do stuff...
+4. Submit pull request
 
 ## How to use
 1. Clone the source
