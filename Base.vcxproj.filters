@@ -17,9 +17,6 @@
     <ClInclude Include="sdk\APIWorld.h">
       <Filter>sdk</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\CMaths.h">
-      <Filter>sdk</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\CVector3.h">
       <Filter>sdk</Filter>
     </ClInclude>

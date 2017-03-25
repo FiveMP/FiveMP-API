@@ -170,7 +170,6 @@
     <ClInclude Include="sdk\APIVehicle.h" />
     <ClInclude Include="sdk\APIVisual.h" />
     <ClInclude Include="sdk\APIWorld.h" />
-    <ClInclude Include="sdk\CMaths.h" />
     <ClInclude Include="sdk\CVector3.h" />
     <ClInclude Include="sdk\CVector4.h" />
   </ItemGroup>

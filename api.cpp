@@ -9,6 +9,7 @@
 
 // API Function Imports
 #include "sdk/APIServer.h"
+#include "sdk/APINpc.h"
 #include "sdk/APIWorld.h"
 #include "sdk/APIEntity.h"
 #include "sdk/APIVehicle.h"
