@@ -81,3 +81,7 @@ ipch/
 *.iobj
 *.ipdb
 *.exp
+*.suo
+*.suo
+/.vs/Public API/v14/.suo
+/.vs/Public API/v15/.suo
