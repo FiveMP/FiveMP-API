@@ -1,12 +1,12 @@
-#ifndef _CVECTOR3_H_
-#	define _CVECTOR3_H_
+#ifndef _CVECTOR2_H_
+#	define _CVECTOR2_H_
 #	include "./sdk/Math.h"
 
 /// <summary>
-/// CVector3 class
+/// CVector2 class
 /// By Ethem Kurt (BigETI)
 /// </summary>
-class CVector3
+class CVector2
 {
 public:
 	/// <summary>
@@ -20,143 +20,127 @@ public:
 	float_t y;
 
 	/// <summary>
-	/// Z component
-	/// </summary>
-	float_t z;
-
-	/// <summary>
 	/// Unit vector
 	/// </summary>
-	static const CVector3 unit;
+	static const CVector2 unit;
 
 	/// <summary>
 	/// Null vector
 	/// </summary>
-	static const CVector3 null;
+	static const CVector2 null;
 
 	/// <summary>
 	/// Up vector
 	/// </summary>
-	static const CVector3 up;
+	static const CVector2 up;
 
 	/// <summary>
 	/// Down vector
 	/// </summary>
-	static const CVector3 down;
+	static const CVector2 down;
 
 	/// <summary>
 	/// Left vector
 	/// </summary>
-	static const CVector3 left;
+	static const CVector2 left;
 
 	/// <summary>
 	/// Right vector
 	/// </summary>
-	static const CVector3 right;
-
-	/// <summary>
-	/// Front vector
-	/// </summary>
-	static const CVector3 front;
-
-	/// <summary>
-	/// Back vector
-	/// </summary>
-	static const CVector3 back;
+	static const CVector2 right;
 
 	/// <summary>
 	/// Default constructor
 	/// </summary>
-	CVector3();
+	CVector2();
 
 	/// <summary>
 	/// Copy constructor
 	/// </summary>
 	/// <param name="v">Vector to assign from</param>
-	CVector3(const CVector3 &v);
+	CVector2(const CVector2 &v);
 
 	/// <summary>
 	/// Constructor
 	/// </summary>
 	/// <param name="_x">X component</param>
 	/// <param name="_y">Y component</param>
-	/// <param name="_z">Z component</param>
-	CVector3(float_t _x, float_t _y, float_t _z);
+	CVector2(float_t _x, float_t _y);
 
 	/// <summary>
 	/// Destructor
 	/// </summary>
-	~CVector3();
-
+	~CVector2();
+	
 	/// <summary>
-	/// Assign Vector
+	/// Assign vector
 	/// </summary>
 	/// <param name="v">Vector to assign from</param>
 	/// <returns>Itself</returns>
-	CVector3 &operator=(const CVector3 &v);
+	CVector2 &operator=(const CVector2 &v);
 
 	/// <summary>
 	/// Add Vector
 	/// </summary>
 	/// <param name="v">Add from vector and assign result</param>
 	/// <returns>Itself</returns>
-	CVector3 &operator+=(const CVector3 &v);
+	CVector2 &operator+=(const CVector2 &v);
 
 	/// <summary>
-	/// Subtract Vector
+	/// Subtract vector
 	/// </summary>
-	/// <param name="v">Subtract from vector and assign result</param>
+	/// <param name="v">Add from vector and assign result</param>
 	/// <returns>Itself</returns>
-	CVector3 &operator-=(const CVector3 &v);
+	CVector2 &operator-=(const CVector2 &v);
 
 	/// <summary>
-	/// Multiply Vector
+	/// Multiply vector
 	/// </summary>
 	/// <param name="s">Scalar to multiply with and assign result</param>
 	/// <returns>Itself</returns>
-	CVector3 &operator*=(float_t s);
+	CVector2 &operator*=(float_t s);
 
 	/// <summary>
-	/// Divide Vector
+	/// Divide vector
 	/// </summary>
 	/// <param name="s">Scalar to divide with and assign result</param>
 	/// <returns>Itself</returns>
-	CVector3 &operator/=(float_t s);
+	CVector2 &operator/=(float_t s);
 
 	/// <summary>
-	/// Add Vector
+	/// Add vector
 	/// </summary>
-	/// <param name="v">Add from vector</param>
+	/// <param name="v">Vector to add</param>
 	/// <returns>Result vector</returns>
-	CVector3 operator+(const CVector3 &v);
+	CVector2 operator+(const CVector2 &v);
 
 	/// <summary>
-	/// Subtract Vector
+	/// Subtract vector
 	/// </summary>
-	/// <param name="v">Subtract from vector</param>
+	/// <param name="v">Vector to subtract</param>
 	/// <returns>Result vector</returns>
-	CVector3 operator-(const CVector3 &v);
+	CVector2 operator-(const CVector2 &v);
 
 	/// <summary>
 	/// Vector dot product
 	/// </summary>
-	/// <param name="v">Scalar to multiply with</param>
-	/// <returns>Result vector</returns>
-	float_t operator*(const CVector3 &v);
+	/// <param name="v">Vector for dot product</param>
+	/// <returns>Dot product</returns>
+	float_t operator*(const CVector2 &v);
 
 	/// <summary>
-	/// Multiply Vector
+	/// Add vector
 	/// </summary>
 	/// <param name="s">Scalar to multiply with</param>
 	/// <returns>Result vector</returns>
-	CVector3 operator*(float_t s);
+	CVector2 operator*(float_t s);
 
 	/// <summary>
-	/// Multiply Vector
+	/// Divide vector
 	/// </summary>
 	/// <param name="s">Scalar to divide with</param>
 	/// <returns>Result vector</returns>
-	CVector3 operator/(float_t s);
+	CVector2 operator/(float_t s);
 
 	/// <summary>
 	/// Is vector null
@@ -188,46 +172,44 @@ public:
 	/// <param name="p">Point to check</param>
 	/// <param name="range">Range for check</param>
 	/// <returns>If is point in range true, otherwise false</returns>
-	bool IsInRange(const CVector3 &p, float_t range);
+	bool IsInRange(const CVector2 &p, float_t range);
 
 	/// <summary>
-	/// Get cross product from 2 vectors
+	/// Get square angled vector
 	/// </summary>
-	/// <param name="v">Vector to get cross product from</param>
-	/// <returns>Cross product from 2 vectors</returns>
-	CVector3 CrossProduct(const CVector3 &v);
+	/// <returns>Square angeled vector</returns>
+	CVector2 SquareAngle();
 
 	/// <summary>
 	/// Get angle between two vectors (radians)
 	/// </summary>
 	/// <param name="v">Vector to get angle between</param>
 	/// <returns>Angle between 2 vectors (radians)</returns>
-	float_t GetAngle(const CVector3 &v);
+	float_t GetAngle(const CVector2 &v);
 
 	/// <summary>
 	/// Get angle between two vectors (degrees)
 	/// </summary>
 	/// <param name="v">Vector to get angle between</param>
 	/// <returns>Angle between 2 vectors (degrees)</returns>
-	float_t GetAngleDegrees(const CVector3 &v);
+	float_t GetAngleDegrees(const CVector2 &v);
 
 	/// <summary>
-	/// Rotate around vector (radians)
+	/// Rotate vector (radians)
 	/// </summary>
-	/// <param name="n">Normal vector to rotate around</param>
 	/// <param name="radians">Radians to rotate</param>
-	void RotateAround(const CVector3 &n, float_t radians);
+	void Rotate(float_t radians);
 
 	/// <summary>
-	/// Rotate around vector (degrees)
+	/// Rotate vector (degrees)
 	/// </summary>
-	/// <param name="n">Normal vector to rotate around</param>
 	/// <param name="degrees">Degrees to rotate</param>
-	void RotateAroundDegrees(const CVector3 &n, float_t degrees);
+	void RotateDegrees(float_t degrees);
 
 	/// <summary>
 	/// Negate vector
 	/// </summary>
 	void Negate();
+	
 };
 #endif
