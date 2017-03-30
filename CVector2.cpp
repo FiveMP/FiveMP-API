@@ -124,6 +124,13 @@ void CVector2::SetMagnitude(float_t m)
 	}
 }
 
+CVector2 CVector2::WithMagnitude(float_t m)
+{
+	CVector2 ret(*this);
+	ret.SetMagnitude(m);
+	return ret;
+}
+
 bool CVector2::IsInRange(const CVector2 & p, float_t range)
 {
 	return MagnitudeSquared() <= (range * range);
@@ -146,12 +153,27 @@ float_t CVector2::GetAngleDegrees(const CVector2 & v)
 
 void CVector2::Rotate(float_t radians)
 {
-	(*this) = CVector2((x * cos(radians)) - (y * sin(radians)), (x * sin(radians)) + (y * cos(radians)));
+	float_t cr(cos(radians)), sr(sin(radians));
+	(*this) = CVector2((x * cr) - (y * sr), (x * sr) + (y * cr));
+}
+
+CVector2 CVector2::CreateRotated(float_t radians)
+{
+	CVector2 ret(*this);
+	ret.Rotate(radians);
+	return ret;
 }
 
 void CVector2::RotateDegrees(float_t degrees)
 {
 	Rotate((degrees * PI) / 180.0f);
+}
+
+CVector2 CVector2::CreateRotatedDegrees(float_t degrees)
+{
+	CVector2 ret(*this);
+	ret.RotateDegrees(degrees);
+	return ret;
 }
 
 void CVector2::Negate()

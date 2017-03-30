@@ -183,6 +183,13 @@ public:
 	void SetMagnitude(float_t m);
 
 	/// <summary>
+	/// Create vector with magnitude
+	/// </summary>
+	/// <param name="m">Magnitude</param>
+	/// <returns>Vector with set magnitude</returns>
+	CVector3 WithMagnitude(float_t m);
+
+	/// <summary>
 	/// Is point in range
 	/// </summary>
 	/// <param name="p">Point to check</param>
@@ -219,11 +226,25 @@ public:
 	void RotateAround(const CVector3 &n, float_t radians);
 
 	/// <summary>
+	/// Create vector rotated around vector (radians)
+	/// </summary>
+	/// <param name="radians">Radians to rotate</param>
+	/// <returns>Vector rotated around vector</returns>
+	CVector3 CreateRotatedAround(const CVector3 &n, float_t radians);
+
+	/// <summary>
 	/// Rotate around vector (degrees)
 	/// </summary>
 	/// <param name="n">Normal vector to rotate around</param>
 	/// <param name="degrees">Degrees to rotate</param>
 	void RotateAroundDegrees(const CVector3 &n, float_t degrees);
+
+	/// <summary>
+	/// Create vector rotated around vector (degrees)
+	/// </summary>
+	/// <param name="degrees">Degrees to rotate</param>
+	/// <returns>Vector rotated around vector</returns>
+	CVector3 CreateRotatedAroundDegrees(const CVector3 &n, float_t degrees);
 
 	/// <summary>
 	/// Negate vector

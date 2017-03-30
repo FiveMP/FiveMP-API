@@ -167,6 +167,13 @@ public:
 	void SetMagnitude(float_t m);
 
 	/// <summary>
+	/// Create vector with magnitude
+	/// </summary>
+	/// <param name="m">Magnitude</param>
+	/// <returns>Vector with set magnitude</returns>
+	CVector2 WithMagnitude(float_t m);
+
+	/// <summary>
 	/// Is point in range
 	/// </summary>
 	/// <param name="p">Point to check</param>
@@ -201,10 +208,24 @@ public:
 	void Rotate(float_t radians);
 
 	/// <summary>
+	/// Create rotated vector (radians)
+	/// </summary>
+	/// <param name="radians">Radians to rotate</param>
+	/// <returns>Rotated vector</returns>
+	CVector2 CreateRotated(float_t radians);
+
+	/// <summary>
 	/// Rotate vector (degrees)
 	/// </summary>
 	/// <param name="degrees">Degrees to rotate</param>
 	void RotateDegrees(float_t degrees);
+
+	/// <summary>
+	/// Create rotated vector (degrees)
+	/// </summary>
+	/// <param name="degrees">Degrees to rotate</param>
+	/// <returns>Rotated vector</returns>
+	CVector2 CreateRotatedDegrees(float_t degrees);
 
 	/// <summary>
 	/// Negate vector
