@@ -250,5 +250,11 @@ public:
 	/// Negate vector
 	/// </summary>
 	void Negate();
+
+	/// <summary>
+	/// Create negated vector
+	/// </summary>
+	/// <returns>Negated vector</returns>
+	CVector3 CreateNegated();
 };
 #endif

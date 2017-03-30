@@ -99,10 +99,24 @@ void Quaternion::Conjugate()
 	vp.Negate();
 }
 
+Quaternion Quaternion::CreateConjugated()
+{
+	Quaternion ret(*this);
+	ret.Conjugate();
+	return ret;
+}
+
 void Quaternion::Negate()
 {
 	vp.Negate();
 	w = -w;
+}
+
+Quaternion Quaternion::CreateNegated()
+{
+	Quaternion ret(*this);
+	ret.Negate();
+	return ret;
 }
 
 void Quaternion::Inverse()
@@ -113,6 +127,13 @@ void Quaternion::Inverse()
 		-vp.z * _1_ms,
 		w * _1_ms);
 	(*this) = t;
+}
+
+Quaternion Quaternion::CreateInversed()
+{
+	Quaternion ret(*this);
+	ret.Inverse();
+	return ret;
 }
 
 CVector3 Quaternion::ToEuler()

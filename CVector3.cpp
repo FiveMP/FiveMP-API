@@ -193,3 +193,10 @@ void CVector3::Negate()
 	y = -y;
 	z = -z;
 }
+
+CVector3 CVector3::CreateNegated()
+{
+	CVector3 ret(*this);
+	ret.Negate();
+	return ret;
+}

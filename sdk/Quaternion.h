@@ -113,14 +113,32 @@ public:
 	void Conjugate();
 
 	/// <summary>
+	/// Create conjugate quaternion
+	/// </summary>
+	/// <returns>Conjugated quaternion</returns>
+	Quaternion CreateConjugated();
+
+	/// <summary>
 	/// Negate quaternion
 	/// </summary>
 	void Negate();
 
 	/// <summary>
+	/// Create negated quaternion
+	/// </summary>
+	/// <returns>Negated quaternion</returns>
+	Quaternion CreateNegated();
+
+	/// <summary>
 	/// Inverse quaternion
 	/// </summary>
 	void Inverse();
+
+	/// <summary>
+	/// Create inversed quaternion
+	/// </summary>
+	/// <returns>Inversed quaternion</returns>
+	Quaternion CreateInversed();
 
 	/// <summary>
 	/// Get euler angles (radians)
