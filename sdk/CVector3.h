@@ -165,13 +165,13 @@ public:
 	bool IsNull();
 
 	/// <summary>
-	/// Get magnitude of vector squared (faster than CVector2::Magnitude())
+	/// Get magnitude of vector squared (faster than CVector3::Magnitude())
 	/// </summary>
 	/// <returns>Magnitude squared</returns>
 	float_t MagnitudeSquared();
 
 	/// <summary>
-	/// Get magnitude of vector (slower than CVector2::MagnitudeSquared())
+	/// Get magnitude of vector (slower than CVector3::MagnitudeSquared())
 	/// </summary>
 	/// <returns>Magnitude</returns>
 	float_t Magnitude();
