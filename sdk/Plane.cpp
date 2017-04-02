@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "./sdk/Plane.h"
+#include "../stdafx.h"
 
 Plane::Plane() : xv(CVector3::up), yv(CVector3::right)
 {

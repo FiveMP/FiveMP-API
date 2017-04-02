@@ -1,7 +1,3 @@
-#ifndef _CVECTOR2_H_
-#	define _CVECTOR2_H_
-#	include "./sdk/Math.h"
-
 /// <summary>
 /// CVector2 class
 /// By Ethem Kurt (BigETI)
@@ -239,4 +235,3 @@ public:
 	CVector2 CreateNegated();
 	
 };
-#endif

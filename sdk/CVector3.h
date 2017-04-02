@@ -1,7 +1,3 @@
-#ifndef _CVECTOR3_H_
-#	define _CVECTOR3_H_
-#	include "./sdk/Math.h"
-
 /// <summary>
 /// CVector3 class
 /// By Ethem Kurt (BigETI)
@@ -257,4 +253,3 @@ public:
 	/// <returns>Negated vector</returns>
 	CVector3 CreateNegated();
 };
-#endif

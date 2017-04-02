@@ -85,3 +85,7 @@ ipch/
 *.suo
 /.vs/Public API/v14/.suo
 /.vs/Public API/v15/.suo
+*.db-shm
+*.db-wal
+/.vs/Public API/v15/Solution.VC.db-wal
+/.vs/Public API/v15/Solution.VC.db-shm

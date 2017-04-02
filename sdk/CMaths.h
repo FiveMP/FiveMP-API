@@ -1,11 +1,20 @@
-#ifndef CMaths_h
-#define CMaths_h
+#define DOUBLE_PI    (M_PI * 2)
+#define PI           M_PI
+#define HALF_PI      M_PI_2
+#define RADS_PER_DEG (PI / 180.0f)
+#define DEGS_PER_RAD (180.0f / PI)
 
-#define DOUBLE_PI    6.283185307179586232f
-#define PI           (DOUBLE_PI * 0.5f)
-#define HALF_PI      (DOUBLE_PI * 0.25f)
-#define RADS_PER_DEG (DOUBLE_PI / 360.0f)
-#define DEGS_PER_RAD (360.0f / DOUBLE_PI)
+#define EULER	M_E
+#define EPSILON	std::numeric_limits<float_t>::epsilon()
+#define IS_FLOAT_ZERO(_f)	(((_f) <= EPSILON) && ((_f) >= (-EPSILON)))
+
+#ifdef FIVEMP_DOUBLE_PRECISION
+#define SQRT(_v) sqrt(_v)
+typedef double float_t;
+#else
+#define SQRT(_v) sqrtf(_v)
+typedef float float_t;
+#endif
 
 namespace Math
 {
@@ -181,41 +190,3 @@ static bool IsPointInPolygon(int nvert, float *polyX, float *polyY, float pointX
 	return bValid;
 }
 };
-
-struct Vector2
-{
-	float x;
-	float y;
-
-	Vector2()
-	{
-		x = y = 0.0f;
-	}
-
-	Vector2(float _x, float _y)
-	{
-		x = x; y = y;
-	}
-};
-
-// TODO: Class'iy in its own file
-class Vector4
-{
-public:
-	float x; // 00-04
-	float y; // 04-08
-	float z; // 08-0C
-	float w; // 0C-10
-
-	Vector4()
-	{
-		x = y = z = 0.0f;
-	}
-
-	Vector4(float _x, float _y, float _z, float _w)
-	{
-		x = _x; y = _y; z = _z; w = _w;
-	}
-};
-
-#endif

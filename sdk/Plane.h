@@ -1,8 +1,3 @@
-#ifndef _PLANE_H_
-#	define _PLANE_H_
-#	include "./sdk/CVector2.h"
-#	include "./sdk/CVector3.h"
-
 /// <summary>
 /// Plane class
 /// By Ethem Kurt (BigETI)
@@ -85,4 +80,3 @@ public:
 	/// <returns>Plane normal vector</returns>
 	CVector3 GetNormal();
 };
-#endif

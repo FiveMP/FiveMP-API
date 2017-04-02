@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "./sdk/CVector3.h"
+#include "../stdafx.h"
 
 const CVector3 CVector3::unit(1.0f, 1.0f, 1.0f);
 const CVector3 CVector3::null(0.0f, 0.0f, 0.0f);

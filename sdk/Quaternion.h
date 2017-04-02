@@ -1,7 +1,3 @@
-#ifndef _QUATERNION_H_
-#	define _QUATERNION_H_
-#	include "./sdk/CVector3.h"
-
 /// <summary>
 /// Quaternion class
 /// By Ethem Kurt (BigETI)
@@ -150,4 +146,3 @@ public:
 	/// </summary>
 	CVector3 ToEulerDegrees();
 };
-#endif

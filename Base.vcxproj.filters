@@ -2,6 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="api.cpp" />
+    <ClCompile Include="sdk\Plane.cpp">
+      <Filter>sdk\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\CVector3.cpp">
+      <Filter>sdk\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\CVector2.cpp">
+      <Filter>sdk\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\Quaternion.cpp">
+      <Filter>sdk\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api.h" />
@@ -47,18 +60,13 @@
     <ClInclude Include="sdk\CVector4.h">
       <Filter>sdk\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\Math.h">
-      <Filter>sdk\Maths</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\Plane.h">
       <Filter>sdk\Maths</Filter>
     </ClInclude>
     <ClInclude Include="sdk\Quaternion.h">
       <Filter>sdk\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\DataTypes.h">
-      <Filter>sdk\Maths</Filter>
-    </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">

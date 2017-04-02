@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "./sdk/CVector2.h"
+#include "../stdafx.h"
 
 const CVector2 CVector2::unit(1.0f, 1.0f);
 const CVector2 CVector2::null(0.0f, 0.0f);

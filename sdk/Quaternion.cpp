@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "./sdk/Quaternion.h"
+#include "../stdafx.h"
 
 const Quaternion Quaternion::identity(CVector3::null, 1.0f);
 

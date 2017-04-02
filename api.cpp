@@ -1,30 +1,4 @@
-#include <iostream>
-#include <sstream>
-
-#include "api.h"
-
-// Math
-#include "sdk/CVector2.h"
-#include "sdk/CVector3.h"
-#include "sdk/CVector4.h"
-#include "sdk/DataTypes.h"
-#include "sdk/Math.h"
-#include "sdk/Plane.h"
-#include "sdk/Quaternion.h"
-
-#include "sdk/CMaths.h"
-#include "sdk/Structs.h"
-
-// API Function Imports
-#include "sdk/APIEntity.h"
-#include "sdk/APICheckpoint.h"
-#include "sdk/APINpc.h"
-#include "sdk/APIObject.h"
-#include "sdk/APIPlayer.h"
-#include "sdk/APIServer.h"
-#include "sdk/APIVehicle.h"
-#include "sdk/APIVisual.h"
-#include "sdk/APIWorld.h"
+#include "stdafx.h"
 
 extern "C" DLL_PUBLIC bool API_Initialize(void) {
 	// When Plugin gets loaded
@@ -44,14 +18,14 @@ extern "C" DLL_PUBLIC bool API_OnTick(void) {
 	return true;
 }
 
-extern "C" DLL_PUBLIC bool API_OnPlayerConnecting(const char *guid)
+extern "C" DLL_PUBLIC bool API_OnPlayerConnecting(const std::string guid)
 {
 	// When a player connects (still loading everything from the server)	
 	API::Server::PrintMessage(L"Connecting");
 	return true;
 }
 
-extern "C" DLL_PUBLIC bool API_OnPlayerConnected(int player)
+extern "C" DLL_PUBLIC bool API_OnPlayerConnected(int entity, int playerid)
 {
 	// When the player is successfully connected (loaded in, but not spawned yet)
 	API::Server::PrintMessage(L"Connected");
