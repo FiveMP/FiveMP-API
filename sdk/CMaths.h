@@ -1,12 +1,3 @@
-//================= IV:Network - https://github.com/GTA-Network/IV-Network =================
-//
-// File: CMath.h
-// Project: Shared
-// Author: FRi<FRi.developing@gmail.com>
-// License: See LICENSE in root directory
-//
-//==============================================================================
-
 #ifndef CMaths_h
 #define CMaths_h
 
