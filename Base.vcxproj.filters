@@ -5,25 +5,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api.h" />
-    <ClInclude Include="sdk\APIServer.h">
-      <Filter>sdk</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\APIVehicle.h">
-      <Filter>sdk</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\APIVisual.h">
       <Filter>sdk</Filter>
     </ClInclude>
     <ClInclude Include="sdk\APIWorld.h">
       <Filter>sdk</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\CVector3.h">
+    <ClInclude Include="sdk\Structs.h">
       <Filter>sdk</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\CVector4.h">
+    <ClInclude Include="sdk\APICheckpoint.h">
       <Filter>sdk</Filter>
     </ClInclude>
     <ClInclude Include="sdk\APIEntity.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\APINpc.h">
       <Filter>sdk</Filter>
     </ClInclude>
     <ClInclude Include="sdk\APIObject.h">
@@ -32,10 +29,43 @@
     <ClInclude Include="sdk\APIPlayer.h">
       <Filter>sdk</Filter>
     </ClInclude>
+    <ClInclude Include="sdk\APIServer.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\APIVehicle.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CMaths.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CVector2.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CVector3.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\CVector4.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\Math.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\Plane.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\Quaternion.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\DataTypes.h">
+      <Filter>sdk\Maths</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">
       <UniqueIdentifier>{53ff5b31-1865-4560-a251-9cf7d011eef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\Maths">
+      <UniqueIdentifier>{1bb4f979-0f11-4640-8295-e4c642ebd1ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

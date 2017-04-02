@@ -4,19 +4,27 @@
 #include "api.h"
 
 // Math
+#include "sdk/CVector2.h"
 #include "sdk/CVector3.h"
 #include "sdk/CVector4.h"
+#include "sdk/DataTypes.h"
+#include "sdk/Math.h"
+#include "sdk/Plane.h"
+#include "sdk/Quaternion.h"
+
+#include "sdk/CMaths.h"
 #include "sdk/Structs.h"
 
 // API Function Imports
-#include "sdk/APIServer.h"
-#include "sdk/APIWorld.h"
 #include "sdk/APIEntity.h"
+#include "sdk/APICheckpoint.h"
+#include "sdk/APINpc.h"
+#include "sdk/APIObject.h"
+#include "sdk/APIPlayer.h"
+#include "sdk/APIServer.h"
 #include "sdk/APIVehicle.h"
 #include "sdk/APIVisual.h"
-#include "sdk/APIPlayer.h"
-#include "sdk/APIObject.h"
-#include "sdk/APICheckpoint.h"
+#include "sdk/APIWorld.h"
 
 extern "C" DLL_PUBLIC bool API_Initialize(void) {
 	// When Plugin gets loaded
