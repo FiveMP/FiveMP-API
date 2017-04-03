@@ -108,12 +108,12 @@ static bool Math::IsPointInCuboid(float_t min_x, float_t min_y, float_t min_z, f
 	return ((point_x >= min_x) && (point_x <= max_x) && (point_y >= min_y) && (point_y <= max_y) && (point_z >= min_z) && (point_z <= max_z));
 }
 
-static bool Math::IsPointInPolygon(std::vector < std::pair < float_t, float_t > > & poly, float_t point_x, float_t point_y)
+static bool Math::IsPointInPolygon(std::vector < CVector2 > & poly, float_t point_x, float_t point_y)
 {
 	bool ret = false;
 	for (size_t sz = poly.size(), i = 0, j = (sz - 1); i != sz; j = i++)
 	{
-		if (((poly[i].second > point_y) != (poly[j].second > point_y)) && (point_x < (poly[j].first - poly[i].first) * (point_y - poly[i].second) / (poly[j].second - poly[i].second) + poly[i].first))
+		if (((poly[i].y > point_y) != (poly[j].y > point_y)) && (point_x < (poly[j].x - poly[i].x) * (point_y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x))
 			ret = !ret;
 	}
 	return ret;

@@ -229,18 +229,12 @@ namespace Math
 	static bool IsPointInCuboid(float_t min_x, float_t min_y, float_t min_z, float_t max_x, float_t max_y, float_t max_z, float_t point_x, float_t point_y, float_t point_z);
 
 	/// <summary>
-	/// Is 2D point in cuboid
+	/// Is 2D point in 2D polygon
 	/// </summary>
-	/// <param name="min_x">Minimum X</param>
-	/// <param name="min_y">Minimum Y</param>
-	/// <param name="min_z">Minimum Z</param>
-	/// <param name="max_x">Maximum X</param>
-	/// <param name="max_y">Maximum Y</param>
-	/// <param name="max_z">Maximum Z</param>
+	/// <param name="poly">2D polygon</param>
 	/// <param name="point_x">Point Y</param>
 	/// <param name="point_y">Point Y</param>
-	/// <param name="point_z">Point z</param>
 	/// <returns>If in area true, otherwise false</returns>
-	static bool IsPointInPolygon(std::vector < std::pair < float_t, float_t > > & poly, float_t point_x, float_t point_y);
+	static bool IsPointInPolygon(std::vector < CVector2 > & poly, float_t point_x, float_t point_y);
 };
 #endif
