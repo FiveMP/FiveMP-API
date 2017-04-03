@@ -14,7 +14,10 @@
     <ClCompile Include="sdk\Quaternion.cpp">
       <Filter>sdk\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="CMaths.cpp">
+      <Filter>sdk\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="FiveMPPCH.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api.h" />
@@ -66,7 +69,7 @@
     <ClInclude Include="sdk\Quaternion.h">
       <Filter>sdk\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="FiveMP.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">
@@ -75,5 +78,8 @@
     <Filter Include="sdk\Maths">
       <UniqueIdentifier>{1bb4f979-0f11-4640-8295-e4c642ebd1ae}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Server.Launcher.lib" />
   </ItemGroup>
 </Project>

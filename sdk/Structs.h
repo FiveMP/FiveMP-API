@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __STRUCTS_H__
+#	define __STRUCTS_H__
 
 struct Color {
 	int Red;
@@ -46,3 +47,4 @@ struct PedFeature
 {
 	float scale = 0.0f;
 };
+#endif

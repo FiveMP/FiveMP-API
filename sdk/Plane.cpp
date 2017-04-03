@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "../stdafx.h"
+#include "FiveMP.h"
 
 Plane::Plane() : xv(CVector3::up), yv(CVector3::right)
 {
@@ -37,6 +37,7 @@ Plane & Plane::operator=(const Plane & p)
 {
 	xv = p.xv;
 	yv = p.yv;
+	return (*this);
 }
 
 CVector3 Plane::GetPoint(const CVector2 & p)
