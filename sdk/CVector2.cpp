@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "../stdafx.h"
+#include "FiveMP.h"
 
 const CVector2 CVector2::unit(1.0f, 1.0f);
 const CVector2 CVector2::null(0.0f, 0.0f);
@@ -148,7 +148,7 @@ float_t CVector2::GetAngle(const CVector2 & v)
 
 float_t CVector2::GetAngleDegrees(const CVector2 & v)
 {
-	return (GetAngle(v) * 180.0f) / PI;
+	return (GetAngle(v) * 180.0f) / (float_t)PI;
 }
 
 void CVector2::Rotate(float_t radians)
@@ -166,7 +166,7 @@ CVector2 CVector2::CreateRotated(float_t radians)
 
 void CVector2::RotateDegrees(float_t degrees)
 {
-	Rotate((degrees * PI) / 180.0f);
+	Rotate((degrees * (float_t)PI) / 180.0f);
 }
 
 CVector2 CVector2::CreateRotatedDegrees(float_t degrees)

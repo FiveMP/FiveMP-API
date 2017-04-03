@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "FiveMP.h"
 
 extern "C" DLL_PUBLIC bool API_Initialize(void) {
 	// When Plugin gets loaded

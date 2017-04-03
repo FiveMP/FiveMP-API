@@ -22,7 +22,7 @@
     <ProjectGuid>{62BEAF06-48E0-4B13-A40D-8CF54E308F22}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Base</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
     <ProjectName>My Plugin</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,12 +107,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;BASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeaderFile>FiveMP.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -160,11 +160,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="api.cpp" />
+    <ClCompile Include="CMaths.cpp" />
     <ClCompile Include="sdk\CVector2.cpp" />
     <ClCompile Include="sdk\CVector3.cpp" />
     <ClCompile Include="sdk\Plane.cpp" />
     <ClCompile Include="sdk\Quaternion.cpp" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="FiveMPPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api.h" />
@@ -184,7 +187,10 @@
     <ClInclude Include="sdk\Plane.h" />
     <ClInclude Include="sdk\Quaternion.h" />
     <ClInclude Include="sdk\Structs.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="FiveMP.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Server.Launcher.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

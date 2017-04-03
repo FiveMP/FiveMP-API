@@ -6,7 +6,7 @@ Author:
 	Ethem Kurt (BigETI)
 */
 
-#include "../stdafx.h"
+#include "FiveMP.h"
 
 const Quaternion Quaternion::identity(CVector3::null, 1.0f);
 
@@ -49,7 +49,7 @@ Quaternion Quaternion::FromEuler(const CVector3 & euler)
 Quaternion Quaternion::FromEulerDegrees(const CVector3 & euler_degrees)
 {
 	CVector3 e(euler_degrees);
-	e *= PI;
+	e *= (float_t)PI;
 	e /= 180.0f;
 	return FromEuler(e);
 }
@@ -58,6 +58,7 @@ Quaternion & Quaternion::operator=(const Quaternion & q)
 {
 	vp = q.vp;
 	w = q.w;
+	return (*this);
 }
 
 Quaternion & Quaternion::operator*=(const Quaternion & q)
@@ -86,12 +87,12 @@ Quaternion & Quaternion::operator/=(const Quaternion & q)
 
 Quaternion & Quaternion::operator*(const Quaternion & q)
 {
-	return Quaternion(*this) * q;
+	return Quaternion(*this) *= q;
 }
 
 Quaternion & Quaternion::operator/(const Quaternion & q)
 {
-	return Quaternion(*this) / q;
+	return Quaternion(*this) /= q;
 }
 
 void Quaternion::Conjugate()
@@ -148,5 +149,5 @@ CVector3 Quaternion::ToEuler()
 
 CVector3 Quaternion::ToEulerDegrees()
 {
-	return (ToEuler() * 180.0f) / PI;
+	return (ToEuler() * 180.0f) / (float_t)PI;
 }
