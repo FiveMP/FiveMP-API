@@ -1,3 +1,6 @@
+#ifndef __PLANE_H__
+#	define __PLANE_H__
+
 /// <summary>
 /// Plane class
 /// By Ethem Kurt (BigETI)
@@ -80,3 +83,4 @@ public:
 	/// <returns>Plane normal vector</returns>
 	CVector3 GetNormal();
 };
+#endif

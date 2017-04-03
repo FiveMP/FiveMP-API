@@ -1,16 +1,12 @@
-#pragma once
+#ifndef __APISERVER_H__
+#	define __APISERVER_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-	namespace API
+EXTERN_C namespace API
+{
+	class Server
 	{
-		class Server
-		{
-		public:
-			DLL_PUBLIC_I static void PrintMessage(const std::wstring  message);
-		};
-	}
-#ifdef __cplusplus
+	public:
+		DLL_PUBLIC_I static void PrintMessage(const std::wstring  message);
+	};
 }
 #endif

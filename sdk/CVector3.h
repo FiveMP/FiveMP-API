@@ -1,3 +1,6 @@
+#ifndef __CVECTOR3_H__
+#	define __CVECTOR3_H__
+
 /// <summary>
 /// CVector3 class
 /// By Ethem Kurt (BigETI)
@@ -253,3 +256,4 @@ public:
 	/// <returns>Negated vector</returns>
 	CVector3 CreateNegated();
 };
+#endif

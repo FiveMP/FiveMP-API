@@ -1,13 +1,13 @@
 #include "FiveMP.h"
 
-static float_t Math::WrapAround(float_t fValue, float_t fHigh)
+static float_t Math::WrapAround(float_t value, float_t high)
 {
-	return fValue - (fHigh * floor((float_t)(fValue / fHigh)));
+	return value - (high * floor((float_t)(value / high)));
 }
 
-static float_t Math::ConvertRadiansToDegrees(float_t fRotation)
+static float_t Math::ConvertRadiansToDegrees(float_t radians)
 {
-	return Math::WrapAround((fRotation * 180.0f / (float_t)PI + 360.0f), 360.0f);
+	return Math::WrapAround((((radians * 180.0f) / (float_t)PI) + 360.0f), 360.0f);
 }
 
 static CVector3 Math::ConvertRadiansToDegrees(const CVector3 &vecRotation)
@@ -17,117 +17,104 @@ static CVector3 Math::ConvertRadiansToDegrees(const CVector3 &vecRotation)
 		Math::ConvertRadiansToDegrees(vecRotation.z));
 }
 
-static float_t Math::ConvertDegreesToRadians(float_t fRotation)
+static float_t Math::ConvertDegreesToRadians(float_t degrees)
 {
-	return Math::WrapAround((fRotation * (float_t)PI / 180.0f + 2 * (float_t)PI), (float_t)DOUBLE_PI);
+	return Math::WrapAround((degrees * (float_t)PI / 180.0f + 2 * (float_t)PI),
+		(float_t)DOUBLE_PI);
 }
 
-static CVector3 Math::ConvertDegreesToRadians(const CVector3 &vecRotation)
+static CVector3 Math::ConvertDegreesToRadians(const CVector3 &vec_degrees)
 {
-	return CVector3(Math::ConvertDegreesToRadians(vecRotation.x),
-		Math::ConvertDegreesToRadians(vecRotation.y),
-		Math::ConvertDegreesToRadians(vecRotation.z));
+	return CVector3(Math::ConvertDegreesToRadians(vec_degrees.x),
+		Math::ConvertDegreesToRadians(vec_degrees.y),
+		Math::ConvertDegreesToRadians(vec_degrees.z));
+}
+
+static float_t Math::GetOffsetRadians(float_t a, float_t b)
+{
+	float_t ret = (b > a) ? (b - a) : (-(a - b));
+	if (ret > PI)
+		ret = (float_t)-(DOUBLE_PI - ret);
+	else if (ret <= -PI)
+		ret = (float_t)(DOUBLE_PI + ret);
+	return ret;
+}
+
+static CVector3 Math::GetOffsetRadians(const CVector3 & a, const CVector3 & b)
+{
+	return CVector3(Math::GetOffsetRadians(a.x, b.x), Math::GetOffsetRadians(a.y, b.y), Math::GetOffsetRadians(a.z, b.z));
 }
 
 static float_t Math::GetOffsetDegrees(float_t a, float_t b)
 {
-	float_t c = (b > a) ? b - a : 0.0f - (a - b);
-
+	float_t c = (b > a) ? (b - a) : (-(a - b));
 	if (c > 180.0f)
-		c = 0.0f - (360.0f - c);
+		c = -(360.0f - c);
 	else if (c <= -180.0f)
 		c = (360.0f + c);
-
 	return c;
 }
 
-static CVector3 Math::GetOffsetDegrees(const CVector3& a, const CVector3& b)
+static CVector3 Math::GetOffsetDegrees(const CVector3 & a, const CVector3 & b)
 {
 	return CVector3(Math::GetOffsetDegrees(a.x, b.x), Math::GetOffsetDegrees(a.y, b.y), Math::GetOffsetDegrees(a.z, b.z));
 }
 
-// Find the relative position of fPos between fStart and fEnd
-static const float_t Math::Unlerp(const double fStart, const double fPos, const double fEnd)
+static const float_t Math::Unlerp(const double start, const double pos, const double end)
 {
 	// Avoid dividing by 0 (results in INF values)
-	if (fStart == fEnd) return 1.0f;
+	if (start == end) return 1.0f;
 
-	return (float_t)((fPos - fStart) / (fEnd - fStart));
+	return (float_t)((pos - start) / (end - start));
 }
 
-// Find the relative position of fPos between fStart and fEnd
-// and clamp it between 0 and 1 avoiding extrapolation
-static const float_t Math::UnlerpClamped(const double fStart, const double fPos, const double fEnd)
+static const float_t Math::UnlerpClamped(const double start, const double pos, const double end)
 {
-	return Math::Clamp(0.0f, Math::Unlerp(fStart, fPos, fEnd), 1.0f);
+	return Math::Clamp(0.0f, Math::Unlerp(start, pos, end), 1.0f);
 }
 
-// Find the distance between two 2D points
 static float_t Math::GetDistanceBetweenPoints2D(float_t x, float_t y, float_t xx, float_t yy)
 {
-	float_t newx = (xx - x);
-	float_t newy = (yy - y);
-	return SQRT(newx * newx + newy * newy);
+	return CVector2(xx - x, yy - y).Magnitude();
 }
 
-// Find the distance between two 3D points
 static float_t Math::GetDistanceBetweenPoints3D(float_t x, float_t y, float_t z, float_t xx, float_t yy, float_t zz)
 {
-	float_t newx = (xx - x);
-	float_t newy = (yy - y);
-	float_t newz = (zz - z);
-	return SQRT(newx * newx + newy * newy + newz * newz);
+	return CVector3(xx - x, yy - y, zz - z).Magnitude();
 }
 
-// Check if a 2D point is within the specified circle
-static bool Math::IsPointInCircle(float_t circleX, float_t circleY, float_t circleDistance, float_t pointX, float_t pointY)
+static bool Math::IsPointInCircle(float_t circle_x, float_t circle_y, float_t circle_radius, float_t point_x, float_t point_y)
 {
-	float_t distancebetween = Math::GetDistanceBetweenPoints2D(circleX, circleY, pointX, pointY);
-	return (distancebetween < circleDistance);
+	return CVector2(circle_x, circle_y).IsInRange(CVector2(point_x, point_y), circle_radius);
 }
 
-// Check if a 3D point is within the specified tube
-static bool Math::IsPointInTube(float_t tubeX, float_t tubeY, float_t tubeZ, float_t tubeHeight, float_t tubeRadius, float_t pointX, float_t pointY, float_t pointZ)
+static bool Math::IsPointInTube(float_t tube_x, float_t tube_y, float_t tube_z, float_t tube_height, float_t tube_radius, float_t point_x, float_t point_y, float_t point_z)
 {
-	float_t distancebetween = Math::GetDistanceBetweenPoints2D(tubeX, tubeY, pointX, pointY);
-	return (distancebetween < tubeRadius && pointZ < tubeZ + tubeHeight && pointZ >= tubeZ);
+	return (point_z >= tube_z) && (point_z <= (tube_z + tube_height)) && IsPointInCircle(tube_x, tube_y, tube_radius, point_x, point_y);
 }
 
-// Check if a 3D point is within the specified ball
-static bool Math::IsPointInBall(float_t ballX, float_t ballY, float_t ballZ, float_t ballRadius, float_t pointX, float_t pointY, float_t pointZ)
+static bool Math::IsPointInBall(float_t ball_x, float_t ball_y, float_t ball_z, float_t ball_radius, float_t point_x, float_t point_y, float_t point_z)
 {
-	float_t distancebetween = Math::GetDistanceBetweenPoints3D(ballX, ballY, ballZ, pointX, pointY, pointZ);
-	return (distancebetween < ballRadius);
+	return CVector3(ball_x, ball_y, ball_z).IsInRange(CVector3(point_x, point_y, point_z), ball_radius);
 }
 
-// Check if a 2D point is within the specified 2D area
-static bool Math::IsPointInArea(float_t areaX, float_t areaY, float_t areaX2, float_t areaY2, float_t pointX, float_t pointY)
+static bool Math::IsPointInArea(float_t min_x, float_t min_y, float_t max_x, float_t max_y, float_t point_x, float_t point_y)
 {
-	return (pointX >= areaX && pointX <= areaX2 && pointY >= areaY && pointY <= areaY2);
+	return ((point_x >= min_x) && (point_x <= max_x) && (point_y >= min_y) && (point_y <= max_y));
 }
 
-// Check if a 3D point is within the specified 3D area
-static bool Math::IsPointInArea(float_t fAreaX, float_t fAreaY, float_t fAreaZ, float_t fAreaX2, float_t fAreaY2, float_t fAreaZ2, float_t fPointX, float_t fPointY, float_t fPointZ)
+static bool Math::IsPointInCuboid(float_t min_x, float_t min_y, float_t min_z, float_t max_x, float_t max_y, float_t max_z, float_t point_x, float_t point_y, float_t point_z)
 {
-	return ((fPointX >= fAreaX && fPointX <= fAreaX2) && (fPointY >= fAreaY && fPointY <= fAreaY2) && (fPointZ >= fAreaZ && fPointZ <= fAreaZ2));
+	return ((point_x >= min_x) && (point_x <= max_x) && (point_y >= min_y) && (point_y <= max_y) && (point_z >= min_z) && (point_z <= max_z));
 }
 
-// Check if a 3D point is within the specified cuboid
-static bool Math::IsPointInCuboid(float_t areaX, float_t areaY, float_t areaZ, float_t areaX2, float_t areaY2, float_t areaZ2, float_t pointX, float_t pointY, float_t pointZ)
+static bool Math::IsPointInPolygon(std::vector < std::pair < float_t, float_t > > & poly, float_t point_x, float_t point_y)
 {
-	return (pointX >= areaX && pointX <= areaX2 && pointY >= areaY && pointY <= areaY2 && pointZ >= areaZ && pointZ <= areaZ2);
-}
-
-// polyX and polyY as arrays
-static bool Math::IsPointInPolygon(int nvert, float_t *polyX, float_t *polyY, float_t pointX, float_t pointY)
-{
-	bool bValid = false;
-
-	for (int i = 0, j = (nvert - 1); i < nvert; j = i++)
+	bool ret = false;
+	for (size_t sz = poly.size(), i = 0, j = (sz - 1); i != sz; j = i++)
 	{
-		if (((polyY[i] > pointY) != (polyY[j] > pointY)) && (pointX < (polyX[j] - polyX[i]) * (pointY - polyY[i]) / (polyY[j] - polyY[i]) + polyX[i]))
-			bValid = !bValid;
+		if (((poly[i].second > point_y) != (poly[j].second > point_y)) && (point_x < (poly[j].first - poly[i].first) * (point_y - poly[i].second) / (poly[j].second - poly[i].second) + poly[i].first))
+			ret = !ret;
 	}
-
-	return bValid;
+	return ret;
 }

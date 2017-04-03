@@ -1,3 +1,6 @@
+#ifndef __CVECTOR2_H__
+#	define __CVECTOR2_H__
+
 /// <summary>
 /// CVector2 class
 /// By Ethem Kurt (BigETI)
@@ -235,3 +238,5 @@ public:
 	CVector2 CreateNegated();
 	
 };
+
+#endif

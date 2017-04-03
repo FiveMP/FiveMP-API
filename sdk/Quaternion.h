@@ -1,3 +1,6 @@
+#ifndef __QUATERNION_H__
+#	define __QUATERNION_H__
+
 /// <summary>
 /// Quaternion class
 /// By Ethem Kurt (BigETI)
@@ -146,3 +149,4 @@ public:
 	/// </summary>
 	CVector3 ToEulerDegrees();
 };
+#endif
