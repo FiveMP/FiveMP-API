@@ -8,46 +8,6 @@ extern "C" {
 		class Entity
 		{
 		public:
-			/*DLL_PUBLIC_I struct PedComponent
-			{
-				int drawableid = -1;
-				int textureid = -1;
-				int paletteid = -1;
-			};
-
-			DLL_PUBLIC_I struct PedHeadBlend
-			{
-				int shapeFirst = 0;
-				int shapeSecond = 0;
-				int shapeThird = 0;
-				int skinFirst = 0;
-				int skinSecond = 0;
-				int skinThird = 0;
-				float shapeMix = 0;
-				float skinMix = 0;
-				float thirdMix = 0;
-			};
-
-			DLL_PUBLIC_I struct PedHeadOverlay
-			{
-				int index = 0;
-				float opacity = 0.0f;
-				int colorType = 0;
-				int colorID = 0;
-				int secondColorID = 0;
-			};
-
-			DLL_PUBLIC_I struct PedProp
-			{
-				int drawableid = 0;
-				int textureid = 0;
-			};
-
-			DLL_PUBLIC_I struct PedFeature
-			{
-				float scale = 0.0f;
-			};*/
-
 			/// <summary>
 			/// Destroys/Removes a entity from the server
 			/// </summary>
@@ -74,7 +34,7 @@ extern "C" {
 			/// </summary>
 			/// <param name="entity">The entity you wish to get the rotation off.</param>
 			/// <returns name="rotation">The CVector3 rotation of the entity</returns>
-			DLL_PUBLIC_I CVector3 GetRotation(const int entity);
+			DLL_PUBLIC_I static const CVector3 GetRotation(const int entity);
 
 			/// <summary>
 			/// Sets the rotation of the entity.
@@ -82,7 +42,7 @@ extern "C" {
 			/// <param name="entity">The entity you wish to set the rotation off.</param>
 			/// <param name="rotation">The rotation you wish to set they entity at.</param>
 			/// <returns></returns>
-			DLL_PUBLIC_I void SetRotation(const int entity, const CVector3 rotation);
+			DLL_PUBLIC_I static void SetRotation(const int entity, const CVector3 rotation);
 
 			/// <summary>
 			/// Gets the Ped Component data of the player or npc entity.
@@ -150,17 +110,17 @@ extern "C" {
 			/// Gets the face feature data of the player or npc entity.
 			/// </summary>
 			/// <param name="entity">The entity of the player or npc you wish to get their model face feature data.</param>
-			/// <param name="index">The index you wish to get the data off (Index can be 0 - 19).</param>
-			/// <returns name="feature">The face feature scale. (Scale ranges from -1.0 to 1.0)</returns>
-			DLL_PUBLIC_I static const float GetPedFaceFeature(const int entity, const int index);
+			/// <param name="feature">The index you wish to get the data off (Index can be 0 - 19).</param>
+			/// <returns name="scale">The face feature scale. (Scale ranges from -1.0 to 1.0)</returns>
+			DLL_PUBLIC_I static const float GetPedFaceFeature(const int entity, const int feature);
 
 			/// <summary>
 			/// Sets the face feature data of the player or npc entity.
 			/// </summary>
 			/// <param name="entity">The entity of the player or npc you wish to set their model face feature data.</param>
-			/// <param name="index">The index you wish to set the data off (Index can be 0 - 19).</param>
+			/// <param name="feature">The feature you wish to set the data off (Index can be 0 - 19).</param>
 			/// <param name="scale">The face feature scale. (Scale ranges from -1.0 to 1.0)</param>
-			DLL_PUBLIC_I static void SetPedFaceFeature(const int entity, const int index, const float scale);
+			DLL_PUBLIC_I static void SetPedFaceFeature(const int entity, const int feature, const float scale);
 
 			/// <summary>
 			/// Gets the view distance of the entity.
