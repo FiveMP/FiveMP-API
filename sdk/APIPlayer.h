@@ -28,6 +28,21 @@ extern "C" {
 			/// <param name="entity">The entity of the player to get the username of.</param>
 			DLL_PUBLIC_I static const std::string GetUsername(const int entity);
 
+			/// <summary>
+			/// Gets the players controls state.
+			/// </summary>
+			/// <param name="entity">The entity of the player.</param>
+			/// <returns name="disabled">The disabled controls state.</returns>
+			DLL_PUBLIC_I static const bool IsControllable(const int entity);
+
+			/// <summary>
+			/// Set the players controls state.
+			/// </summary>
+			/// <param name="entity">The entity of the player.</param>
+			/// <param name="disablecontrols">The state to set the controls disabled state in.</param>
+			/// <param name="frozen">Wether the player should be frozen in place.</param>
+			DLL_PUBLIC_I static void SetControllable(const int entity, bool disablecontrols, bool frozen = true);
+
 		};
 	}
 #ifdef __cplusplus
@@ -39,7 +54,7 @@ private:
 	int Entity;
 public:
 	const int GetEntity() { return Entity; }
-	const int SetEntity(const int entity) { Entity = entity; }
+	void SetEntity(const int entity) { Entity = entity; }
 
 	const CVector3 GetPosition()
 	{
@@ -137,7 +152,7 @@ public:
 		API::Visual::ShowMessageAboveMapToPlayer(Entity, message, pic, icontype, sender, subject);
 	}
 
-	void SendMessage(const std::string message)
+	void SendChatMessage(const std::string message)
 	{
 		API::Visual::SendChatMessageToPlayer(Entity, message);
 	}
@@ -145,5 +160,30 @@ public:
 	const std::string GetUsername()
 	{
 		API::Player::GetUsername(Entity);
+	}
+
+	void ShowCursor(const bool show)
+	{
+		API::Visual::ShowCursor(Entity, show);
+	}
+
+	void LoadURL(const std::string url, const std::string appcode = "", const bool remote = false)
+	{
+		API::CEF::LoadURL(Entity, url, appcode, remote);
+	}
+
+	void JavaScriptCall(std::string call)
+	{
+		API::CEF::JavaScriptCall(Entity, call);
+	}
+
+	const bool IsControllable()
+	{
+		return API::Player::IsControllable(Entity);
+	}
+
+	void SetControllable(bool disablecontrols, bool frozen = true)
+	{
+		API::Player::SetControllable(Entity, disablecontrols, frozen);
 	}
 };
